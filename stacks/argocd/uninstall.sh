@@ -5,7 +5,7 @@ set -e
 ################################################################################
 # Uninstall objects, namespace and delete CRDs
 ################################################################################
-NAMESPACE="kube-prometheus-stack"
+NAMESPACE="argocd"
 declare -a CRD=("applications.argoproj.io" "appprojects.argoproj.io")
 declare -a clusterrole=("argocd-application-controller" "argocd-server")
 declare -a clusterrolebinding=("argocd-application-controller" "argocd-server")
