@@ -1,3 +1,8 @@
+#!/bin/sh
+
+set -e
+
+
 STACK="cloud-manager"
 CHART="ei/einnovator-devops"
 CHART_VERSION="1.0.0"
