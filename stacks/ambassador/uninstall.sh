@@ -25,4 +25,4 @@ CRD=("authservices.getambassador.io"
 
 
 helm uninstall $STACK --namespace $STACK && for crd in ${CRD[@]}; \
- do kubectl delete crd $crd; done
+ do kubectl delete crd $crd; done && kubectl delete namespace $NAMESPACE
