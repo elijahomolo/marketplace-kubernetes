@@ -1,3 +1,8 @@
+#!/bin/sh
+
+set -e
+
+
 STACK="ambassador"
 CHART="datawire/ambassador"
 CHART_VERSION="6.5.13"
