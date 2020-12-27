@@ -14,4 +14,5 @@ declare -a CRD=("alertmanagerconfigs.monitoring.coreos.com"
  "thanosrulers.monitoring.coreos.com" )
 
 helm uninstall ${STACK} --namespace ${NAMESPACE} && \
-for i in "${CRD[@]}"; do kubectl delete crd $i ; done
+for i in "${CRD[@]}"; do kubectl delete crd $i ; done && kubectl delete \
+namespace $NAMESPACE
