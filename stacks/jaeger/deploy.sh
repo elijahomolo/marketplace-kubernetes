@@ -13,6 +13,9 @@ else
   VALUES="https://raw.githubusercontent.com/digitalocean/marketplace-kubernetes/master/stacks/${STACK}/values.yaml"
 fi
 
+# jaegertracing repo needs to be added prior to install
+helm repo add jaegertracing https://jaegertracing.github.io/helm-charts && \
+
 helm install "$CHART" \
   --create-namespace \
   --generate-name \
