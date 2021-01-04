@@ -2,13 +2,13 @@
 
 set -e
 
-declare -a clusterrole=($(kubectl get clusterrole --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql-operator\|minio-operator\|mattermost-operator'))
-declare -a clusterrolebinding=($(kubectl get clusterrolebinding --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql-operator\|minio-operator\|mattermost-operator'))
-declare -a crd=($(kubectl get crd --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql-operator\|minio-operator\|mattermost-operator'))
-declare -a mutatingwebhookconfiguration=($(kubectl get mutatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql-operator\|minio-operator\|mattermost-operator'))
-declare -a validatingwebhookconfiguration=($(kubectl get validatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql-operator\|minio-operator\|mattermost-operator'))
-declare -a apiservice=($(kubectl get apiservice --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql-operator\|minio-operator\|mattermost-operator'))
-declare -a podsecuritypolicy=($(kubectl get podsecuritypolicy --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql-operator\|minio-operator\|mattermost-operator'))
+declare -a clusterrole=($(kubectl get clusterrole --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql\|minio\|mattermost'))
+declare -a clusterrolebinding=($(kubectl get clusterrolebinding --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql\|minio\|mattermost'))
+declare -a crd=($(kubectl get crd --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql\|minio\|mattermost'))
+declare -a mutatingwebhookconfiguration=($(kubectl get mutatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql\|minio\|mattermost'))
+declare -a validatingwebhookconfiguration=($(kubectl get validatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql\|minio\|mattermost'))
+declare -a apiservice=($(kubectl get apiservice --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql\|minio\|mattermost'))
+declare -a podsecuritypolicy=($(kubectl get podsecuritypolicy --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx\|mysql\|minio\|mattermost'))
 
 for i in "${clusterrole[@]}"; do kubectl delete clusterrole "$i"; done && \
 for i in "${clusterrolebinding[@]}"; do kubectl delete clusterrolebinding "$i"; done && \
