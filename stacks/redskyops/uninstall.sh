@@ -24,4 +24,5 @@ for i in "${mutatingwebhookconfiguration[@]}"; do kubectl delete mutatingwebhook
 for i in "${validatingwebhookconfiguration[@]}"; do kubectl delete validatingwebhookconfiguration "$i"; done && \
 #for i in "${apiservice[@]}"; do kubectl delete apiservice "$i"; done && \
 for i in "${podsecuritypolicy[@]}"; do kubectl delete podsecuritypolicy "$i"; done && \
-kubectl delete all --all -n ${NAMESPACE} && kubectl delete ns ${NAMESPACE}
+kubectl delete all --all -n ${NAMESPACE} && kubectl config \
+set-context --current --namespace=default && kubectl delete ns ${NAMESPACE}
