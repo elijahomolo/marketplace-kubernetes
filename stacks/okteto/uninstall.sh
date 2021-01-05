@@ -23,13 +23,13 @@ crd=("certificaterequests.cert-manager.io"
 "functions.openfaas.com" )
 
 
-declare -a clusterrole=($(kubectl get clusterrole --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx'))
-declare -a clusterrolebinding=($(kubectl get clusterrolebinding --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx'))
-#declare -a crd=($(kubectl get crd --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx'))
-declare -a mutatingwebhookconfiguration=($(kubectl get mutatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx'))
-declare -a validatingwebhookconfiguration=($(kubectl get validatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx'))
-declare -a apiservice=($(kubectl get apiservice --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx'))
-declare -a podsecuritypolicy=($(kubectl get podsecuritypolicy --no-headers -o custom-columns=":metadata.name" | grep 'ingress-nginx'))
+declare -a clusterrole=($(kubectl get clusterrole --no-headers -o custom-columns=":metadata.name" | grep 'okteto'))
+declare -a clusterrolebinding=($(kubectl get clusterrolebinding --no-headers -o custom-columns=":metadata.name" | grep 'okteto'))
+#declare -a crd=($(kubectl get crd --no-headers -o custom-columns=":metadata.name" | grep 'okteto'))
+declare -a mutatingwebhookconfiguration=($(kubectl get mutatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'okteto'))
+declare -a validatingwebhookconfiguration=($(kubectl get validatingwebhookconfiguration --no-headers -o custom-columns=":metadata.name" | grep 'okteto'))
+declare -a apiservice=($(kubectl get apiservice --no-headers -o custom-columns=":metadata.name" | grep 'okteto'))
+declare -a podsecuritypolicy=($(kubectl get podsecuritypolicy --no-headers -o custom-columns=":metadata.name" | grep 'okteto'))
 
 helm uninstall ${RELEASE} --namespace ${NAMESPACE} && \
 for i in "${clusterrole[@]}"; do kubectl delete clusterrole "$i"; done && \
