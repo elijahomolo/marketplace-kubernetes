@@ -4,7 +4,7 @@ set -e
 
 STACK="openebs"
 CHART="stable/openebs"
-CHART_VERSION="1.10.0"
+CHART_VERSION="2.5.1"
 NAMESPACE="openebs"
 
 if [ -z "${MP_KUBERNETES}" ]; then
