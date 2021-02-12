@@ -8,26 +8,8 @@ CHART="datawire/ambassador"
 CHART_VERSION="6.5.13"
 NAMESPACE="ambassador"
 
-CRD=("authservices.getambassador.io"
-"consulresolvers.getambassador.io"
-"devportals.getambassador.io"
-"hosts.getambassador.io"
-"kubernetesendpointresolvers.getambassador.io"
-"kubernetesserviceresolvers.getambassador.io"
-"logservices.getambassador.io"
-"mappings.getambassador.io"
-"modules.getambassador.io"
-"ratelimitservices.getambassador.io"
-"tcpmappings.getambassador.io"
-"tlscontexts.getambassador.io"
-"tracingservices.getambassador.io"
-"filterpolicies.getambassador.io"
-"filters.getambassador.io"
-"ratelimits.getambassador.io"
-"projectcontrollers.getambassador.io"
-"projects.getambassador.io"
-"projectrevisions.getambassador.io")
+declare -a crd=($(kubectl get crd --no-headers -o custom-columns=":metadata.name" | grep getambassador))
 
 
-helm uninstall $STACK --namespace $STACK && for crd in ${CRD[@]}; \
- do kubectl delete crd $crd; done && kubectl delete namespace $NAMESPACE
+helm uninstall $STACK --namespace $STACK && for i in "${crd[@]}";\
+ do kubectl delete crd "$i"; done && kubectl delete namespace $NAMESPACE
